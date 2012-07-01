@@ -1,4 +1,4 @@
 sar-man
 =======
 
-Search and Rescue Management
+Search and Rescue Management Project

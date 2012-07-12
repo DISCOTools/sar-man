@@ -1,0 +1,4 @@
+#!/bin/sh
+APPDIR=`dirname $0`;
+java -cp "$APPDIR/src:$APPDIR/bin:/opt/eclipse/x64/indigo/SR2/plugins/com.google.gwt.eclipse.sdkbundle_2.4.0.v201205091048-rel-r37/gwt-2.4.0/gwt-user.jar:/opt/eclipse/x64/indigo/SR2/plugins/com.google.gwt.eclipse.sdkbundle_2.4.0.v201205091048-rel-r37/gwt-2.4.0/gwt-dev.jar" com.google.gwt.i18n.tools.I18NSync -out $APPDIR/src org.sarman.common.i18n.Messages  ;
+

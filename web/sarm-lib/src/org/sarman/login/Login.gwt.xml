@@ -9,10 +9,8 @@
 	<!-- SAR-Man dependencies -->
 	<inherits name="org.sarman.common.Common"/>
 
-	<!-- Source definitions -->
+	<!-- Client-side source definitions -->
 	<source path="client" />
-	<source path="server" />
 	<source path="shared" />
-	<source path="resources" />
 	
 </module>

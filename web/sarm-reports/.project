@@ -42,4 +42,11 @@
 		<nature>com.google.gwt.eclipse.core.gwtNature</nature>
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src-lib</name>
+			<type>2</type>
+			<location>/home/kennethg/src/git/sar-man/web/sarm-lib/src</location>
+		</link>
+	</linkedResources>
 </projectDescription>

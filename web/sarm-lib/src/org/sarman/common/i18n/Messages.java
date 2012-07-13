@@ -2,10 +2,28 @@ package org.sarman.common.i18n;
 
 /**
  * Interface to represent the constants contained in resource bundle:
- * 	'/home/kennethg/src/eclipse/workspace/sarm-lib/src/org/sarman/common/i18n/Messages.properties'.
+ * 	'/home/kennethg/src/git/sar-man/web/sarm-lib/src/org/sarman/common/i18n/Messages.properties'.
  */
 public interface Messages extends com.google.gwt.i18n.client.Constants {
   
+  /**
+   * Translated "Authentication failed".
+   * 
+   * @return translated "Authentication failed"
+   */
+  @DefaultStringValue("Authentication failed")
+  @Key("AuthFailed")
+  String AuthFailed();
+
+  /**
+   * Translated "Username or password is wrong".
+   * 
+   * @return translated "Username or password is wrong"
+   */
+  @DefaultStringValue("Username or password is wrong")
+  @Key("AuthWrongCreds")
+  String AuthWrongCreds();
+
   /**
    * Translated "Password".
    * 

@@ -39,10 +39,9 @@
 }
 .gwt-Label-Notify {
 	color: red;
-	font-size: 16px;
+	font-size: 12px;
 	font-style: normal;
 	font-family: Arial;
-	font-weight: bold;
 }
 .gwt-Label-Bold {
 	font-size: 12px;
@@ -96,4 +95,7 @@
 }
 .gwt-Button-Submit:hover {
 	background: crimson;
+}
+.gwt-Button-Submit:disabled {
+	background: lightgray;
 }

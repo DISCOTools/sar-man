@@ -22,5 +22,8 @@
 	
 	<!-- Source definitions -->	
 	<source path="client" />
+
+	<!-- Servlet definitions -->	
+	<servlet path="/LoginService" class="org.sarman.login.server.LoginServiceImpl" />
 	
 </module>

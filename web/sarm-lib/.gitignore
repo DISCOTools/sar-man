@@ -3,8 +3,8 @@
 .gitignore~
 
 # Package Files #
-*.jar
-*.war
+#*.jar
+#*.war
 
 # gwt logs
 .gwt/*
@@ -12,6 +12,7 @@
 # gwt caches and compiled units #
 war/sarm_common/
 war/sarm_login/
+war/WEB-INF/lib/
 gwt-unitCache/
 test-classes/
 www-test/

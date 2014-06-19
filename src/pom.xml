@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>7</version>
+	</parent>
+
+	<groupId>org.discotools.gwt.sarman</groupId>
+	<artifactId>sarman</artifactId>
+	<version>0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>sarman</name>
+
+	<!-- Licenses -->
+	<licenses>
+		<license>
+			<name>The BSD 3-Clause License</name>
+			<url>http://opensource.org/licenses/BSD-3-Clause</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<!-- Source control management -->
+	<scm>
+		<connection>scm:git:git@github.com:DISCOTools/sarman.git/src</connection>
+		<developerConnection>scm:git:git@github.com:DISCOTools/sarman.git/src</developerConnection>
+		<url>git@github.com:DISCOTools/sarman.git/src</url>
+	</scm>
+
+	<!-- SAR-MAN modules -->
+	<modules>
+		<!--module>sarman-core</module -->
+	</modules>
+
+	<properties>
+		<!-- GWT properties -->
+		<gwt.version>2.5.0</gwt.version>
+		<!-- GAE properties -->
+		<gae.version>1.6.6</gae.version>
+		<gae.home>${user.home}/.m2/repository/com/google/appengine/appengine-java-sdk/${gae.version}/appengine-java-sdk-${gae.version}</gae.home>
+		<!-- GWT needs at least java 1.6 -->
+		<maven.compiler.source>1.6</maven.compiler.source>
+		<maven.compiler.target>1.6</maven.compiler.target>
+		<!-- Don't let your Mac use a crazy non-standard encoding -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+
+	<!-- Profiles -->
+	<profiles>
+		<profile>
+			<id>debug</id>
+			<activation>
+				<property>
+					<name>debug</name>
+				</property>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<!-- Compilation settings -->
+				<compile.level>INFO</compile.level>
+				<compile.style>PRETTY</compile.style>
+				<compile.report>true</compile.report>
+				<compile.draft>true</compile.draft>
+				<compile.optimization.level>0</compile.optimization.level>
+			</properties>
+		</profile>
+		<profile>
+			<id>release</id>
+			<activation>
+				<property>
+					<name>release</name>
+				</property>
+			</activation>
+			<properties>
+				<!-- Compilation settings -->
+				<compile.level>INFO</compile.level>
+				<compile.style>OBF</compile.style>
+				<compile.report>true</compile.report>
+				<compile.draft>false</compile.draft>
+				<compile.optimization.level>9</compile.optimization.level>
+			</properties>
+		</profile>
+	</profiles>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- Google Window Toolkit (GWT) -->
+			<dependency>
+				<groupId>com.google.gwt</groupId>
+				<artifactId>gwt-servlet</artifactId>
+				<version>${gwt.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.gwt</groupId>
+				<artifactId>gwt-user</artifactId>
+				<version>${gwt.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.gwt</groupId>
+				<artifactId>gwt-dev</artifactId>
+				<version>${gwt.version}</version>
+			</dependency>
+
+			<!-- Google App Engine (GAE) -->
+			<dependency>
+				<groupId>com.google.appengine</groupId>
+				<artifactId>appengine-api-1.0-sdk</artifactId>
+				<version>${gae.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.appengine</groupId>
+				<artifactId>appengine-testing</artifactId>
+				<version>${gae.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.google.appengine</groupId>
+				<artifactId>appengine-api-stubs</artifactId>
+				<version>${gae.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.google.appengine</groupId>
+				<artifactId>appengine-api-labs</artifactId>
+				<version>${gae.version}</version>
+			</dependency>
+
+			<!-- Standard Web Technologies -->
+			<dependency>
+				<groupId>org.fusesource.restygwt</groupId>
+				<artifactId>restygwt</artifactId>
+				<version>1.3</version>
+			</dependency>
+
+			<!-- Validation -->
+			<dependency>
+				<groupId>javax.validation</groupId>
+				<artifactId>validation-api</artifactId>
+				<version>1.0.0.GA</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.validation</groupId>
+				<artifactId>validation-api</artifactId>
+				<version>1.0.0.GA</version>
+				<classifier>sources</classifier>
+			</dependency>
+
+			<!-- Testing -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.8.1</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>net.sf.extcos</groupId>
+				<artifactId>extcos</artifactId>
+				<version>0.3b</version>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- Logging -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>1.6.2</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-simple</artifactId>
+				<version>1.7.2</version>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+	<!-- Dependencies activated for all projects -->
+	<dependencies>
+		<!-- Logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+
+		<!-- ==================================================== -->
+		<!-- ==== Common plugins ================================ -->
+		<!-- ==================================================== -->
+		<!-- These plugin definitions are only inherited by -->
+		<!-- children when added to <plugins>...</plugins> -->
+		<pluginManagement>
+			<plugins>
+
+				<!-- GWT Maven Plugin -->
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>gwt-maven-plugin</artifactId>
+					<version>2.5.0</version>
+					<executions>
+						<!-- Copy deps into projects before packaging -->
+						<execution>
+							<id>prepare-package</id>
+							<goals>
+								<goal>resources</goal>
+							</goals>
+						</execution>
+						<!-- Enable integration tests -->
+						<execution>
+							<id>integration-test</id>
+							<phase>integration-test</phase>
+							<goals>
+								<goal>test</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<!-- Ask GWT to create the Story of Your Compile (SOYC) (gwt:compile) -->
+						<compileReport>${compile.report}</compileReport>
+						<!-- Unit testing -->
+						<mode>htmlunit</mode>
+						<includes>**/GwtlTestSuite.java</includes>
+						<!-- Other compilation settings -->
+						<style>${compile.style}</style>
+						<logLevel>${compile.level}</logLevel>
+						<draftCompile>${compile.draft}</draftCompile>
+						<optimizationLevel>${compile.optimization.level}</optimizationLevel>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>net.kindleit</groupId>
+					<artifactId>maven-gae-plugin</artifactId>
+					<version>0.9.5</version>
+					<dependencies>
+						<dependency>
+							<groupId>net.kindleit</groupId>
+							<artifactId>gae-runtime</artifactId>
+							<version>${gae.version}</version>
+							<type>pom</type>
+						</dependency>
+					</dependencies>
+				</plugin>
+
+				<!-- Maven WAR packaging plugin -->
+				<plugin>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>2.3</version>
+				</plugin>
+
+				<!-- Maven unit testing plugin -->
+				<plugin>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.12.4</version>
+					<!-- Maven unit testing plugin -->
+					<configuration>
+						<skip>true</skip>
+						<excludes>
+							<exclude>**/*GwtlTest*.java</exclude>
+						</excludes>
+					</configuration>
+				</plugin>
+
+				<!-- Maven cleanup plugin -->
+				<plugin>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>2.5</version>
+				</plugin>
+
+				<!-- Maven resource plugin -->
+				<plugin>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.6</version>
+					<executions>
+						<!-- Copy static web files before executing gwt:run -->
+						<execution>
+							<phase>compile</phase>
+							<goals>
+								<goal>copy-resources</goal>
+							</goals>
+							<configuration>
+								<outputDirectory>${project.build.directory}/${project.build.finalName}</outputDirectory>
+								<resources>
+									<resource>
+										<directory>src/main/webapp</directory>
+									</resource>
+								</resources>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+
+				<!-- Maven Eclipse integration (m2e) plugin -->
+				<plugin>
+					<artifactId>maven-eclipse-plugin</artifactId>
+					<version>2.9</version>
+				</plugin>
+
+				<!-- GPG plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-gpg-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>sign-artifacts</id>
+							<phase>verify</phase>
+							<goals>
+								<goal>sign</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<!-- Maven release plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>2.3.2</version>
+					<executions>
+						<execution>
+							<id>default</id>
+							<goals>
+								<goal>perform</goal>
+							</goals>
+							<configuration>
+								<pomFileName>pom.xml</pomFileName>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+
+				<!-- Maven staging plugin -->
+				<plugin>
+					<groupId>org.sonatype.plugins</groupId>
+					<artifactId>nexus-staging-maven-plugin</artifactId>
+					<version>1.2</version>
+					<extensions>true</extensions>
+					<configuration>
+						<serverId>sonatype-nexus-staging</serverId>
+						<nexusUrl>https://oss.sonatype.org/service/local/staging/deploy/maven2</nexusUrl>
+					</configuration>
+				</plugin>
+
+				<!-- This plugin's configuration is used to store m2e settings only. -->
+				<!-- It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<!-- gwt-maven-plugin -->
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.codehaus.mojo</groupId>
+										<artifactId>gwt-maven-plugin</artifactId>
+										<versionRange>[2.5.0,)</versionRange>
+										<goals>
+											<goal>resources</goal>
+											<goal>generateAsync</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+								<!-- maven-gae-plugin -->
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>net.kindleit</groupId>
+										<artifactId>maven-gae-plugin</artifactId>
+										<versionRange>[0.7.3,)</versionRange>
+										<goals>
+											<goal>unpack</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<execute />
+									</action>
+								</pluginExecution>
+								<!-- nexus staging plugin -->
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.apache.maven.plugins</groupId>
+										<artifactId>maven-enforcer-plugin</artifactId>
+										<versionRange>[1.0,)</versionRange>
+										<goals>
+											<goal>enforce</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+		<!-- Plugins activated for all projects -->
+		<plugins>
+
+			<!-- Ensure that all -->
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.5.1</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+
+			<!-- Mark all projects for Google Plugin for Eclipse (GPE) -->
+			<plugin>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<configuration>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>false</downloadJavadocs>
+					<wtpversion>2.0</wtpversion>
+					<additionalBuildcommands>
+						<buildCommand>
+							<name>com.google.gwt.eclipse.core.gwtProjectValidator</name>
+						</buildCommand>
+					</additionalBuildcommands>
+					<additionalProjectnatures>
+						<projectnature>com.google.gwt.eclipse.core.gwtNature</projectnature>
+					</additionalProjectnatures>
+				</configuration>
+			</plugin>
+		</plugins>
+
+	</build>
+
+</project>

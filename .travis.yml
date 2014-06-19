@@ -1,0 +1,26 @@
+language: java
+jdk:
+  - openjdk7
+
+before_script:
+  # Create settings.xml in 'src' directory
+  - cd src
+  - python ../build/settings.py
+
+script: 
+
+  - if [ -e "settings.xml" ]; then mvn deploy -Drelease --settings settings.xml --global-settings ~/.m2/settings.xml; else mvn package -Drelease; fi
+
+
+notifications:
+  email:
+    recipients:
+      - kenneth.gulbrandsoy@gmail.com
+
+# Set secure environment variables. These are only valid for repository DISCOTools/sar-man! If you run this in a cloned repo, it will fail.
+env:
+  global:
+    # Encrypted SONATYPE_USERNAME=<username>
+    - secure: "GM1934GAamm4FEaHjoa208MYXjjzMvprYRIg2NxtBhJ0sia27rM9VOnBLia2\n/inbS6amTI58RzNVmYaXbKOcm9gRL2nSV+1qKVUj/+0T0mb2Gwi1Eh9Nb512\nZfGweZ3sMKquEMuuWLc1xmuu0PXXoBLCVDkk16V6AyJTxJp0I2M="
+    # Encrypted SONATYPE_PASSWORD=<password>
+    - secure: "KdixWeXg521KGmgamSAk6NmtZ4LuG8yTRPfS5Bh2qNqbudHAsnF5cPbYKOwk\nVyJCztytvvxm5HxcS08C5pynsEo68jtD/uahBtgbvoS3helbVESSpphTkKlV\nFXbIUXvrULEZZRLtdJWRdEOJjeBLwSoFoO/Y7rk9iqTQUEmYpJg="
